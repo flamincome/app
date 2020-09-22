@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot of initial state 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9"
+      >
+        <form
+          autocomplete="off"
+          class="makeStyles-root-1"
+          novalidate=""
+        />
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
+      />
+    </div>
+  </div>
+</body>
+`;

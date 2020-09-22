@@ -37,4 +37,4 @@ export default {
     "NormalizerMethanerenBTC": "0x7757Ffe3aC09bC6430f6896F720E77CF80ec1F74",
     "VaultBaselineDAI": "0x163D457fA8247f1A9279B9fa8eF513de116e4327",
     "NormalizerMethanewBTC": "0xbB44B36e588445D7DA61A1e2e426664d03D40888"
-}
+} as {[contract:string]:string}
