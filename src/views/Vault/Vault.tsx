@@ -32,7 +32,7 @@ export default function Vault(props: { asset: string, web3:Web3Provider, deposit
             {props.asset}
         </Grid>
         <Grid item xs={3}>
-            {props.deposit?"APY: 100%":`Balance: ${balance}`}
+            {props.deposit?"":`Balance: ${balance}`}
         </Grid> 
         <Grid item xs={3}>
         <IconButton
