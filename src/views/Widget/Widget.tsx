@@ -6,8 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Deposit from "../Deposit/Deposit";
-import Operate from "../Operate/Operate";
+import ListVaults from "../Deposit/ListVaults";
 import { Web3Provider } from "../../ethereum";
 import Button from "@material-ui/core/Button";
 
@@ -51,14 +50,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     'max-width': 500,
     "box-shadow": "0px 0px 16px 6px rgba(0, 0, 139, .4)",
-    position:'absolute',
-    top: '20%'
+    "margin-bottom": "5em",
+    "margin-top": "15vh"
   },
 }));
 
 export default function Widget(props: {
   web3: Web3Provider;
-  connectWallet: () => void;
+  connectWallet: () => Promise<void>;
 }) {
   const classes = useStyles();
   const theme = useTheme();
@@ -104,11 +103,11 @@ export default function Widget(props: {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Deposit web3={props.web3} />
+          <ListVaults web3={props.web3} deposit={true} connectWallet={props.connectWallet}/>
           {connectWalletButton}
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Operate web3={props.web3} />
+          <ListVaults web3={props.web3} deposit={false} connectWallet={props.connectWallet}/>
           {connectWalletButton}
         </TabPanel>
       </SwipeableViews>

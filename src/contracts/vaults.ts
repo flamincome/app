@@ -1,7 +1,7 @@
 import deployedAddresses from './deployedAddresses';
 import icons from 'base64-cryptocurrency-icons';
 
-const tokens = [
+export const tokens = [
     "USDT",
     "wBTC",
     "renBTC",
@@ -16,29 +16,21 @@ const tokens = [
 ]
 
 const vaults = tokens.reduce((acc, token)=>{
-    let tokenDetails = icons[token.toUpperCase()];
+    let icon = icons[token.toUpperCase()]?.icon;
     if(token === "wETH"){
-        tokenDetails = {
-            name: 'wETH',
-            icon: icons['ETH']?.icon!
-        }
+        icon =  icons['ETH']!.icon;
     } else if(token === "yCRV" || token === "yDAI" || token === "crvBTC"){
-        tokenDetails = {
-            name: token,
-            icon: icons[token.substr(-3)]?.icon!
-        }
+        icon = icons[token.substr(-3)]!.icon
     }
     acc[token]={
         address: deployedAddresses[`VaultBaseline${token}`],
-        logo: tokenDetails?.icon!,
-        name:tokenDetails?.name!
+        logo: icon!,
     };
     return acc;
 }, {} as {
     [token:string]:{
         address: string,
         logo: string,
-        name: string
     }
 });
 

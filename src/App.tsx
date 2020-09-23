@@ -21,7 +21,7 @@ function App() {
       }
     });
   }
-  const connectWallet = () => {
+  const connectWallet = async () => {
     if (web3 !== null) {
       throw new Error("Wallet already connected");
     }
@@ -34,7 +34,7 @@ function App() {
       );
       return;
     }
-    window.ethereum
+    await window.ethereum
       .enable()
       .then(() => setWeb3(new Web3(window.ethereum as any)));
   };
