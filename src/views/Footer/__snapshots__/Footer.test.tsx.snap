@@ -5,13 +5,13 @@ exports[`snapshot of component rendered without dialogs 1`] = `
   <div>
     <footer>
       <a
-        href="https://github.com/corollari/ln2tBTC"
+        href="https://github.com/flamincome"
       >
         Code
       </a>
        · 
       <a
-        href="https://github.com/corollari/ln2tBTC/blob/master/README.md"
+        href="https://docs.flamincome.finance"
       >
         Docs
       </a>
@@ -75,15 +75,7 @@ exports[`snapshot of component rendered without dialogs 1`] = `
             class="MuiTypography-root MuiDialogContentText-root MuiTypography-body1 MuiTypography-colorTextSecondary"
             id="alert-dialog-description"
           >
-            Just drop a message on
-             
-            <a
-              href="https://discord.com/channels/590951101600235531/681226760209432608/748490345217654786"
-            >
-              Keep's discord
-            </a>
-             
-            tagging me (@corollari#2127) or send me an email at admin@ln2tbtc.com
+            Just open an issue on one of the github repos
           </p>
         </div>
         <div

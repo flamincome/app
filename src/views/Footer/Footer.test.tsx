@@ -12,6 +12,6 @@ test("dialog opens when 'About' is clicked", async () => {
   fireEvent.click(screen.getByText("About"));
   await waitFor(() => screen.getByRole("presentation"));
   expect(screen.getByRole("presentation")).toHaveTextContent(
-    "LN2tBTC is a decentralized service"
+    "FlamIncome is a yielf farming aggregator"
   );
 });
