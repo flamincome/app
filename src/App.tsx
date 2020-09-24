@@ -3,6 +3,7 @@ import Footer from "./views/Footer/Footer";
 import Widget from "./views/Widget/Widget";
 import UserAddress from "./views/UserAddress/UserAddress";
 import AlertDialog from "./views/AlertDialog/AlertDialog";
+import TLV from './views/TLV/TLV'
 import Web3 from "web3";
 import { Web3Provider } from "./ethereum";
 import "./App.css";
@@ -41,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <UserAddress web3={web3} />
+      <TLV />
       <Widget {...{ web3, connectWallet }} />
       <Footer />
       <AlertDialog

@@ -13,6 +13,7 @@ type ContractMethod<ReturnType> = {
 export interface ERC20Contract {
     methods: {
         decimals: () => ContractMethod<NumericalString>,
+        totalSupply: () => ContractMethod<NumericalString>,
         allowance: (owner: Address, spender: Address) => ContractMethod<NumericalString>,
         approve: (address:Address,amount:NumericalString) => ContractMethod<void>,
         balanceOf: (address:Address) => ContractMethod<NumericalString>

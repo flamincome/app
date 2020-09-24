@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     'max-width': 500,
     "box-shadow": "0px 0px 16px 6px rgba(0, 0, 139, .4)",
     "margin-bottom": "5em",
-    "margin-top": "15vh"
+    "margin-top": "10vh"
   },
 }));
 
