@@ -13,6 +13,7 @@ import tokenAddresses from '../../contracts/tokens'
 import Web3 from "web3";
 import type { AbiItem } from 'web3-utils'
 import displayTokenValue from '../utils'
+import BN from 'bn.js'
 import "./DepositPrompt.css"
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -55,14 +56,14 @@ function parseNumber(amount: string) {
 async function depositToken(amount: string, web3: Web3, finish: () => void) {
     try {
         const allowanceResult = tokenContract.methods.allowance(userAddress, vaultContractAddress).call()
-        const num = new (web3.utils as any).BN(amount);
-        const allowance = new (web3.utils as any).BN(await allowanceResult)
+        const num = new BN(amount);
+        const allowance = new BN(await allowanceResult)
 
-        if (allowance.cmp(num) === -1) {
-            if (allowance > 0) {
+        if (allowance.lt(num)) {
+            if (allowance.gt(new BN(0))) {
                 await tokenContract.methods.approve(vaultContractAddress, '0').send({ from: userAddress });
             }
-            await tokenContract.methods.approve(vaultContractAddress, num).send({ from: userAddress });
+            await tokenContract.methods.approve(vaultContractAddress, amount).send({ from: userAddress });
         }
         await vaultContract.methods.deposit(amount).send({ from: userAddress })
         finish();
@@ -104,8 +105,19 @@ function initializeValues(props: Props) {
     userAddress = (props.web3.currentProvider as any).selectedAddress;
 }
 
+async function checkAmount(rawAmount:string, deposit:boolean, setError:(error:null|string)=>void){
+    const balance = new BN(await (deposit?tokenContract:vaultContract).methods.balanceOf(userAddress).call());
+    const amount = new BN(parseNumber(rawAmount));
+    if(amount.gt(balance)){
+        setError("Your balance is too low")
+    } else {
+        setError(null)
+    }
+}
+
 export default function DepositPrompt(props: Props) {
     const [amount, setAmount] = React.useState('0');
+    const [error, setError] = React.useState<null|string>(null);
     const [depositInProgress, setDepositInProgress] = React.useState(false);
     initializeValues(props);
 
@@ -117,10 +129,12 @@ export default function DepositPrompt(props: Props) {
                     <TextField
                         label="Amount"
                         {...sharedInputProps}
+                        error={error !== null}
+                        helperText={error}
                         className={classes.wideTextField}
-                        onChange={(event) => setAmount(event.target.value)}
-                        inputProps={{
-                            min: 0,
+                        onChange={(event) => {
+                            setAmount(event.target.value)
+                            checkAmount(event.target.value, props.deposit, setError)
                         }}
                         value={amount}
                         InputProps={{
@@ -152,7 +166,12 @@ export default function DepositPrompt(props: Props) {
                     <>
                         <Grid item xs={2}></Grid>
                         <Grid item xs={4}>
-                            <Button variant="contained" color="primary" size="large" onClick={
+                            <Button
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                            disabled={error!==null}
+                            onClick={
                                 () => {
                                     setDepositInProgress(true);
                                     if(props.deposit){
