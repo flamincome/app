@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <UserAddress web3={web3} />
-      <TLV />
+      <TLV web3={web3}/>
       <Widget {...{ web3, connectWallet }} />
       <Footer />
       <AlertDialog

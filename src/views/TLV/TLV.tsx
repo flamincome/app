@@ -1,6 +1,6 @@
 import React from "react";
 import Web3 from 'web3';
-import { ERC20Contract } from "../../ethereum";
+import { ERC20Contract, Web3Provider } from "../../ethereum";
 import vaults from '../../contracts/vaults'
 import type { AbiItem } from 'web3-utils'
 import vaultABI from '../../contracts/ABIs/vault.json'
@@ -55,15 +55,15 @@ function formatNumber(x: number) {
   return Math.floor(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export default function TLVCounter() {
+export default function TLVCounter(props: {web3: Web3Provider}) {
   const [tlv, setTlv] = React.useState<null | number>(null);
   React.useEffect(() => {
-    const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/52ad5d0ae18d4d9dbf2f53b94e3907c7'));
+    const web3 = props.web3 ?? new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/52ad5d0ae18d4d9dbf2f53b94e3907c7'))
     const contracts = getContracts(web3);
     const update = ()=> setTotalTLV(contracts).then(setTlv)
     update()
     setInterval(update,10*1000) // 10 secs
-  }, []);
+  }, [props]);
   if (tlv === null) {
     return <></>
   } else {
