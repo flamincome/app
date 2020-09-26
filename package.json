@@ -19,6 +19,7 @@
     "prettier": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-odometerjs": "^2.1.1",
     "react-scripts": "3.4.3",
     "react-swipeable-views": "^0.13.9",
     "typescript": "^3.9.7",
