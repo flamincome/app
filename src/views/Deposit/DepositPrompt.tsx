@@ -5,6 +5,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { VaultContract, ERC20Contract } from "../../ethereum";
 import vaultABI from '../../contracts/ABIs/vault.json'
@@ -249,6 +250,9 @@ export default function DepositPrompt(props: Props) {
                 }}>
                     Max
               </Button>
+            </Grid>
+            <Grid item xs={12}>
+                <MuiAlert elevation={3} variant="filled" severity="warning" >A 0.5% fee will be charged on withdraws</MuiAlert>
             </Grid>
             {
                 depositInProgress ?
