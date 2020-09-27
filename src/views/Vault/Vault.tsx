@@ -18,12 +18,13 @@ async function getBalance(asset:string, web3: Web3, vaultAddress:string){
     return displayTokenValue(balance, Number(await tokenDecimals));
 }
 
-export default function Vault(props: { asset: string, web3:Web3Provider, deposit:boolean, onClick: ()=>void }) {
+export default function Vault(props: { asset: string, apy:number|null, web3:Web3Provider, deposit:boolean, onClick: ()=>void }) {
     const { logo, address } = vaults[props.asset];
     const [balance, setBalance] = React.useState('0');
     if(props.web3!==null && props.deposit === false){
         getBalance(props.asset, props.web3, address).then(setBalance);
     }
+    const APYlabel = props.apy===null?'':`APY: ${props.apy}%`
     return <Grid container spacing={3} className="vault">
         <Grid item xs={2}>
             <img src={logo} alt="coin logo"/>
@@ -32,7 +33,7 @@ export default function Vault(props: { asset: string, web3:Web3Provider, deposit
             {props.asset}
         </Grid>
         <Grid item xs={3}>
-            {props.deposit?"":`Balance: ${balance}`}
+            {props.deposit?APYlabel:`Balance: ${balance}`}
         </Grid> 
         <Grid item xs={3}>
         <IconButton

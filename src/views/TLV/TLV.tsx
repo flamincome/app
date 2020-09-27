@@ -11,7 +11,7 @@ function formatNumber(x: number) {
 export default function TLVCounter() {
   const [tlv, setTlv] = React.useState<null | number>(null);
   React.useEffect(() => {
-    const ws = new WebSocket("wss://flamincome-tlv-pubsub.herokuapp.com/");
+    const ws = new WebSocket("wss://flamincome-tlv-pubsub.herokuapp.com/tlv");
     ws.onmessage=message=>{
       setTlv(Number(message.data))
     }
