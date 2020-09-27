@@ -252,7 +252,7 @@ export default function DepositPrompt(props: Props) {
               </Button>
             </Grid>
             <Grid item xs={12}>
-                <MuiAlert elevation={3} variant="filled" severity="warning" >A 0.5% fee will be charged on withdraws</MuiAlert>
+                <MuiAlert elevation={3} variant="filled" severity="warning" >A 0.5% fee will be charged on withdrawals</MuiAlert>
             </Grid>
             {
                 depositInProgress ?
