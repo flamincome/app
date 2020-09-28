@@ -45,6 +45,10 @@ const contractAddresses = {
         address: "0x6b175474e89094c44da98b954eedeac495271d0f",
         decimals: 18
     },
+    "UNI-V2[WBTC]": {
+        address: "0xBb2b8038a1640196FbE3e38816F3e67Cba72D940",
+        decimals: 18
+    },
 } as {
     [token: string]: { address: string, decimals: number }
 }

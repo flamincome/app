@@ -36,5 +36,9 @@ export default {
     "NormalizerMethaneDAI": "0x7245deD8459f59b0a680640535476c11b3cd0Ef6",
     "NormalizerMethanerenBTC": "0x7757Ffe3aC09bC6430f6896F720E77CF80ec1F74",
     "VaultBaselineDAI": "0x163D457fA8247f1A9279B9fa8eF513de116e4327",
-    "NormalizerMethanewBTC": "0xbB44B36e588445D7DA61A1e2e426664d03D40888"
+    "NormalizerMethanewBTC": "0xbB44B36e588445D7DA61A1e2e426664d03D40888",
+    "VaultBaselineUNI-V2[WBTC]": "0x743BC5cc8F52a84fF6e06E47Bc2af5324f5463D6",
+    "VaultBaselineOKB": "0x272C8dF3E8068952606046c1389fc1e2320FCCfd",
+    "VaultBaselinecrvRenWBTC": "0x10d0A001EeDC62b2A483EB9DFA0bb021aC61d55b",
+    "VaultBaselinecrvRenWSBTC": "0x483A47247d5cBd420A9c5d2838Ec89776ba8B56B",
 } as {[contract:string]:string}
