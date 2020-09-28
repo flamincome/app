@@ -20,7 +20,7 @@ export default function TLVCounter() {
     return <></>
   } else {
     return <Typography variant="h4" className="tlv">
-      TLV: <Odometer value={formatNumber(tlv)} format="(.ddd),dd" /> USD
+      TVL: <Odometer value={formatNumber(tlv)} format="(,ddd)" /> USD
   </Typography>
   }
 }
