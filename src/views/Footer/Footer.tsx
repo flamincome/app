@@ -38,7 +38,7 @@ export default function Footer() {
       >
         {dialog === "about" ? (
           <>
-            FlamIncome is a yielf farming aggregator.
+            FlamIncome is a yield farming aggregator.
             <br />
             <br />
             If you'd like to learn more about how everything works check out our{" "}
