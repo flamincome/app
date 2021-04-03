@@ -12,6 +12,6 @@ test("dialog opens when 'About' is clicked", async () => {
   fireEvent.click(screen.getByText("About"));
   await waitFor(() => screen.getByRole("presentation"));
   expect(screen.getByRole("presentation")).toHaveTextContent(
-    "FlamIncome is a yielf farming aggregator"
+    "FlamIncome is a yield farming aggregator"
   );
 });
